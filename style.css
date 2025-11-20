@@ -18,6 +18,11 @@ body {
     gap: 10px;
     align-items: center;
     flex-basis: 10%;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+
 }
 
 .navbar__s1__title {
@@ -32,12 +37,15 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
+
+
 }
 
 .navbar__s2 input {
     border: none;
     font-size: 16px;
     width: 100%;
+    background-color: transparent;
 }
 
 .navbar__s2 input:focus {
@@ -52,24 +60,42 @@ body {
     align-items: center;
 }
 
-.navbar__s3 p {
-    display: flex;
-    padding: 8px 12px;
-    border-radius: 20px;
-    transition: 0.3s ease;
+/* my Learning popup*/
+
+.mylearning {
+    position: relative;
     cursor: pointer;
-    flex-wrap: nowrap;
-    justify-content: center;
+
 }
 
-.navbar__s3 p:hover,
-.navbar__s3 i:hover {
-    color: goldenrod;
-    transform: scale(1.05);
-    box-sizing: 0 4px 12px rgba(164, 53, 240, 0.4);
+.mylearning__popup {
+    position: absolute;
+    background-color: white;
+    border: solid black 1px;
+    width: 100px;
+    top: 150%;
+    padding: 20px;
+    right: 0;
+    display: none;
+    border-radius: 20px;
+}
+
+.mylearning:hover .mylearning__popup {
+    display: block;
+
+}
+
+
+
+.navbar__s3 i:hover,
+.navbar__s3 p:hover {
+    transform: translateY(-5px);
     box-shadow: 0 6px 15px #A435f0;
+    background-color: white;
     padding: 10px;
     border-radius: 10px;
+
+
 }
 
 .categories {
@@ -88,6 +114,7 @@ body {
     box-shadow: 0.3s ease;
     flex-wrap: wrap;
 
+
 }
 
 .categories p:hover {
@@ -102,27 +129,43 @@ body {
 
 .sale-image {
     position: relative;
-    width: 100%;
+
 }
 
-.sale-img {
-    width: 100%;
-    height: auto;
-    display: flex;
-}
-
-
-.sale-box:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 18);
-}
-
-.sale-image__box {
-    padding: 10px;
-    width: 100px;
-
-    background-color: black;
+.sale-image__offer {
+    width: 35%;
+    padding: 2%;
+    border: #A435f0 solid 5px;
+    background-color: rgb(10, 10, 10);
+    position: absolute;
     color: white;
+    top: 30%;
+    left: 10%;
+    border-radius: 50px;
+    animation-name: zoom;
+    animation-duration: 3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+
 }
+
+@keyframes zoom {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+
+    }
+}
+
+
+
+
 
 .recommended {
     padding: 10px;
@@ -139,12 +182,13 @@ body {
 }
 
 .course-card {
-    width: 300px;
+    flex-grow: 1;
+    flex-basis: 20%;
     background: whitesmoke;
-    padding: 10px;
-    border-radius: 10px;
+    margin: 5px;
     transition: transform 0.10s ease;
     box-shadow: 0.10s ease;
+
 }
 
 .course-card:hover {
@@ -245,3 +289,18 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 47)
 }
 
+/* Media Queries */
+
+@media screen and (max-width:800px) {
+    body {
+        font-size: 10px;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+    .course-card {
+        flex-basis: 40%;
+    }
+
+}
